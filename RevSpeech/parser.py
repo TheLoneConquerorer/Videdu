@@ -1,6 +1,6 @@
 from pytube import YouTube
 from ffmpy import FFmpeg
-import json
+
 ytlink ='https://www.youtube.com/watch?v=NpPyLcQ2vdI'#'https://www.youtube.com/watch?v=rtlJoXxlSFE&list=PLyQSN7X0ro2314mKyUiOILaOC2hk6Pc3j'
 yt = YouTube(ytlink)
 title = yt.title.replace(".","").replace(":","")
@@ -17,10 +17,7 @@ ff=FFmpeg(
 	}
 )
 
-ff.cmd
-ff.run()
-
-def cnp(times):
+def cutAndPaste(times):
 	ff = FFmpeg(
 		inputs = {videoLink: None},
 		outputs = {output.mp4: ['-t',times[0]]}
@@ -46,7 +43,6 @@ def cnp(times):
 		outputs = {title + " edited.mp4": '-c copy'}
 	)
 
-json_file = open('moredata')
-data = json.load(json_file)
-for time in data.items():
-	cnp(time)
+ff.cmd
+ff.run()
+
